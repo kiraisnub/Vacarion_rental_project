@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block title%}Homepage{%endblock%}
+
+{%block body%}
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <p>Are you sure you want to delete "{{ listing.listing_name }}"?</p>
+
+        <button type="submit">Confirm</button>
+    </form>
+
+
+
+
+
+{%endblock%}

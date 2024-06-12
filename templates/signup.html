@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block title%}SignUp{%endblock%}
+
+{%block body%}
+
+
+    <a href="{%url 'login'%}">login</a>
+
+
+
+<h1> signup below</h1>
+<form method="post" enctype="multipart/form-data">
+
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">signup</button>
+
+</form>
+{%endblock%}

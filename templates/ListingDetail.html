@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block title%}Homepage{%endblock%}
+
+{%block body%}
+
+<p>{{object.listing_name}}</p>
+<br>
+<p>{{object.listing_address}}</p>
+<br>
+<p>{{object.listing_price}}</p>
+<br>
+<p><a href="{% url 'ListingUpdate' object.pk %}">Update/edit Listing</a>
+<a href="{% url 'ListingDelete' object.pk %}">Delete Listing</a></p>
+
+{%endblock%}

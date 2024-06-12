@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+{%block title%}Homepage{%endblock%}
+
+{%block body%}
+
+    {% for listing in object_list%}
+<p>{{listing.listing_name}}  ---- {{listing.listing_price}} <a href="{% url 'ListingDetail' listing.pk%}">check out listing</a></p>
+
+
+{%endfor%}
+
+{%endblock%}
