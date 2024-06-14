@@ -3,23 +3,6 @@
 {%block title%}Homepage{%endblock%}
 
 {%block body%}
-    <p> this is home page</p>
-
-    {%if user.is_authenticated%}
-    <p>{{user.username}} is logged in now<p>
-      <form action="{%url 'logout'%}" method="post">
-      {%csrf_token%}
-      <button type="submit">logout</button>
-    </form>
-    <a href="{%url 'password_change'%}">change pass</a><br>
-    <a href="{%url 'CreateListing'%}">New listing</a><br>
-    <a href="{%url 'ListingListView'%}">All listings</a>
-
-    {%else%}
-    <a href="{%url 'login'%}">Login</a>
-    <a href="{%url 'signup'%}">signup</a>
-
-    {%endif%}
 
 
 {%endblock%}

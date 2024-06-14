@@ -5,7 +5,15 @@
 {%block body%}
 
     {% for listing in object_list%}
-<p>{{listing.listing_name}}  ---- {{listing.listing_price}} <a href="{% url 'ListingDetail' listing.pk%}">check out listing</a></p>
+
+<div class="card" style="width: 18rem;">
+  <img src="{{listing.listing_picture1.url}}" class="card-img-top img-fluid" style="max-width: 300px; max-height: 250px; object-fit: cover;" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{listing.listing_name}}</h5>
+    <p class="card-text">${{listing.listing_price}}</p>
+    <a href="{% url 'ListingDetail' listing.pk%}" class="btn btn-primary">check out listing</a>
+  </div>
+</div>
 
 
 {%endfor%}
