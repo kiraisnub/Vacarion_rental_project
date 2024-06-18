@@ -6,14 +6,23 @@
 
     {% for listing in object_list%}
 
-<div class="card" style="width: 18rem;">
-  <img src="{{listing.listing_picture1.url}}" class="card-img-top img-fluid" style="max-width: 300px; max-height: 250px; object-fit: cover;" alt="Card image">
-  <div class="card-body">
-    <h5 class="card-title">{{listing.listing_name}}</h5>
-    <p class="card-text">${{listing.listing_price}}</p>
-    <a href="{% url 'ListingDetail' listing.pk%}" class="btn btn-primary">check out listing</a>
+<div class="d-flex justify-content-center align-items-start mt-3">
+  <div class="card" style="width: 80rem; height: 30rem;">
+    <div class="row no-gutters h-100">
+      <div class="col-6 h-100">
+        <img src="{{listing.listing_picture1.url}}" class="card-img h-100" style="object-fit: cover;" alt="Card image">
+      </div>
+      <div class="col-6">
+        <div class="card-body d-flex flex-column justify-content-center h-100">
+          <h5 class="card-title">{{listing.listing_name}}</h5>
+          <p class="card-text">${{listing.listing_price}}</p>
+          <a href="{% url 'ListingDetail' listing.pk %}" class="btn btn-primary">Check out listing</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 
 
 {%endfor%}
