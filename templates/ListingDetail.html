@@ -2,13 +2,56 @@
 
 {%block title%}Homepage{%endblock%}
 
-{%block body%}
+{% block body %}
+<!--
+ <div class="container">
+        <div class="left-image">
+            <img src="{{ object.listing_picture1.url }}" alt="Left Image">
+        </div>
+        <div class="right-images">
+            <img src="{{ object.listing_picture2.url }}" alt="Right Image 1">
+            <img src="{{ object.listing_picture3.url }}" alt="Right Image 2">
+        </div>
+    </div>-->
+<!-- Bootstrap JavaScript (jQuery, Popper.js, and Bootstrap JS) -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="project-images">
+        <img src="{{ object.listing_picture1.url }}" class="img-fluid large-image" alt="Project Image 1">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-12">
+          <a href="{{ object.listing_picture2.url }}"><img src="{{ object.listing_picture2.url }}" class="small-image" alt="Project Image 2"></a>
+        </div>
+        <div class="col-12">
+           <a href="{{ object.listing_picture3.url }}"><img src="{{ object.listing_picture3.url }}" class="small-image" alt="Project Image 2"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2>{{object.listing_name}}</h2>
+      <p><strong>Address:</strong> {{object.listing_address}}</p>
+      <p><strong>Price:</strong> ${{object.listing_price}}</p>
+      {%if object.listing_host == user %}
+      <a href="{% url 'ListingUpdate' object.pk %}" class="btn btn-primary">Update</a>
+      <a href="{% url 'ListingDelete' object.pk %}" class="btn btn-primary">Delete</a>
+      {%else%}
+      <a href="#" class="btn btn-primary">Buy Now</a>
+      {%endif%}
+    </div>
+  </div>
+</div>
 
-<p>{{object.listing_name}}</p>
+<p></p>
 <br>
-<p>{{object.listing_address}}</p>
+<p></p>
 <br>
-<p>{{object.listing_price}}</p>
+<p></p>
 <br>
 {%if object.listing_host == user %}
 <p><a href="{% url 'ListingUpdate' object.pk %}">Update/edit Listing</a>

@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+
+{%block title%}MY LISTINGS{%endblock%}
+
+{%block body%}
+
+    {% for listing in listings%}
+
+<div class="d-flex justify-content-center align-items-start mt-3">
+  <div class="card" style="width: 80rem; height: 30rem;">
+    <div class="row no-gutters h-100">
+  <div class="col-6 h-100">
+    <div id="carouselExampleFade{{ forloop.counter }}" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="false">
+      <div class="carousel-inner h-100">
+        <div class="carousel-item active h-100">
+          <img src="{{ listing.listing_picture1.url }}" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+        </div>
+        <div class="carousel-item h-100">
+          <img src="{{ listing.listing_picture2.url }}" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+        </div>
+        <div class="carousel-item h-100">
+          <img src="{{ listing.listing_picture3.url }}" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+        </div>
+        <!-- Add more carousel items if needed -->
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ forloop.counter }}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ forloop.counter }}" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+
+
+
+      <div class="col-6">
+        <div class="card-body d-flex flex-column justify-content-center h-100">
+          <h5 class="card-title">{{listing.listing_name}}</h5>
+          <p class="card-text">${{listing.listing_price}}</p>
+          <a href="{% url 'ListingDetail' listing.pk %}" class="btn btn-primary">Check out listing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{%endfor%}
+
+{%endblock%}

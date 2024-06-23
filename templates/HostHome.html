@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block title%}Profile{%endblock%}
+
+{%block body%}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{ user.Profile.url }}" class="img-fluid profile-img" alt="Profile Picture">
+        </div>
+        <div class="col-md-9">
+            <h4>{{ user.username }}</h4>
+            <p>{{ user.email }}</p>
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>City:</strong> {{ user.City }}</p>
+            <!-- You can add more profile details here as needed -->
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -8,7 +8,7 @@ class HostLists(models.Model):
     listing_price=models.IntegerField(default=0)
     listing_picture1=models.ImageField(upload_to='listing_pics',blank=False,null=True)
     listing_picture2=models.ImageField(upload_to='listing_pics',blank=False,null=True)
-    listing_picture3=models.ImageField(upload_to='listing_pics',blank=True,null=True)
+    listing_picture3=models.ImageField(upload_to='listing_pics',blank=False,null=True)
     listing_host = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
