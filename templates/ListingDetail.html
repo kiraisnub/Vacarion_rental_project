@@ -53,8 +53,5 @@
 <br>
 <p></p>
 <br>
-{%if object.listing_host == user %}
-<p><a href="{% url 'ListingUpdate' object.pk %}">Update/edit Listing</a>
-<a href="{% url 'ListingDelete' object.pk %}">Delete Listing</a></p>
-{%endif%}
+
 {%endblock%}
