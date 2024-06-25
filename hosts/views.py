@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 class Signupview(CreateView):
     form_class = CustomHostUserCreationForm
     template_name = 'signup.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')
 
 class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     template_name = 'ProfileUpdate.html'

@@ -32,6 +32,19 @@ class ListingListView(ListView):
     model = HostLists
     template_name = 'ListingListView.html'
 
+    def get_queryset(self):
+        queryset=HostLists.objects.all()
+        sort_option=self.request.GET.get('sort','')
+
+        if sort_option == 'price_low_to_high':
+            queryset=queryset.order_by('listing_price')
+
+        elif sort_option == 'price_high_to_low':
+            queryset=queryset.order_by('-listing_price')
+
+        return queryset
+
+
 class ListingUpdateView(UserPassesTestMixin,UpdateView):
     model = HostLists
     fields = ('listing_name', 'listing_price', 'listing_picture1','listing_picture2','listing_picture3')
