@@ -5,6 +5,16 @@ from .models import HostLists
 from .forms import HostListForm
 from django.urls import reverse_lazy
 
+
+import pandas as pd
+
+class Func():
+    def __init__(self):
+        self.df = pd.read_csv('D:\CODING\python\django/vacation_rentel_pro\listings\in.csv')
+        self.cities_in_india = self.df['City'].tolist()
+
+
+city_list=Func().cities_in_india
 from django.contrib.auth import get_user_model
 # Create your views here.
 
@@ -28,22 +38,49 @@ class DetailLisitngView(LoginRequiredMixin,DetailView):
     template_name = 'ListingDetail.html'
     login_url = 'login'
 
+# class ListingListView(ListView):
+#
+#
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#
+#         # Apply sorting based on URL parameter
+#         sort_option = self.request.GET.get('sort', '')
+#         if sort_option == 'price_low_to_high':
+#             queryset = queryset.order_by('listing_price')
+#         elif sort_option == 'price_high_to_low':
+#             queryset = queryset.order_by('-listing_price')
+#
+#         # Apply city filter based on URL parameter, only if city is not empty
+#         city_option = self.request.GET.get('city', '').strip()
+#         if city_option:
+#             queryset = queryset.filter(listing_city__iexact=city_option)
+#
+#         return queryset
+#
+
+
 class ListingListView(ListView):
     model = HostLists
     template_name = 'ListingListView.html'
 
+
     def get_queryset(self):
-        queryset=HostLists.objects.all()
-        sort_option=self.request.GET.get('sort','')
+        queryset = super().get_queryset()
 
+        # Apply sorting based on URL parameter
+        sort_option = self.request.GET.get('sort', '')
         if sort_option == 'price_low_to_high':
-            queryset=queryset.order_by('listing_price')
-
+            queryset = queryset.order_by('listing_price')
         elif sort_option == 'price_high_to_low':
-            queryset=queryset.order_by('-listing_price')
+            queryset = queryset.order_by('-listing_price')
+
+        # Apply city filter based on URL parameter, only if city is not empty
+        city_option = self.request.GET.get('city', '').strip()
+        if city_option:
+            queryset = queryset.filter(listing_city__iexact=city_option)
 
         return queryset
-
 
 class ListingUpdateView(UserPassesTestMixin,UpdateView):
     model = HostLists

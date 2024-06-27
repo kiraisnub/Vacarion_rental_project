@@ -6,7 +6,7 @@
 <div class="container">
     <!-- Heading -->
     <div class="text-center mb-4">
-        <h1>All Available Properties</h1>
+<h1>All Available Properties in {% if request.GET.city %}{{ request.GET.city|title }}{% else %}India{% endif %}</h1>
     </div>
 
     <!-- Sorting Dropdown (Aligned to the Right) -->
@@ -15,9 +15,11 @@
             Sort
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'ListingListView' %}?sort=price_low_to_high">Price: Low to High</a></li>
-            <li><a class="dropdown-item" href="{% url 'ListingListView' %}?sort=price_high_to_low">Price: High to Low</a></li>
-        </ul>
+
+    <li><a class="dropdown-item" href="?city={{ request.GET.city }}&sort=price_low_to_high">Price: Low to High</a></li>
+    <li><a class="dropdown-item" href="?city={{ request.GET.city }}&sort=price_high_to_low">Price: High to Low</a></li>
+</ul>
+
     </div>
 
     <!-- Listing Cards -->
